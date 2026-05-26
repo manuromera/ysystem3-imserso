@@ -22,11 +22,13 @@ body.ys-imserso-module-active {
 .ysystem3-imserso-theme .window-content,
 .ysystem3-imserso-theme.ims-sheet,
 .ysystem3-imserso-theme.ims-creator {
-  position: relative;
   color: var(--ims-ink);
-  background:
-    linear-gradient(rgba(255, 245, 222, 0.88), rgba(255, 245, 222, 0.9)),
-    url("../assets/branding/sheet-bg.webp") center / cover;
+  background: #fff5de;
+}
+
+.ysystem3-imserso-theme.ims-sheet,
+.ysystem3-imserso-theme.ims-creator {
+  position: relative;
 }
 
 .ysystem3-imserso-theme .ys-screen-header,
@@ -35,18 +37,36 @@ body.ys-imserso-module-active {
 .ysystem3-imserso-theme .ims-item-header,
 .ysystem3-imserso-theme .ims-creator-header {
   border-color: var(--ims-border);
-  background:
-    linear-gradient(90deg, rgba(59, 44, 34, 0.82), rgba(45, 129, 149, 0.62)),
-    url("../assets/branding/sheet-header.png") center / cover;
-  color: #fff9ea;
+  background: linear-gradient(90deg, #f7e8c5, #fff9ea);
+  color: var(--ims-ink);
 }
 
 .ysystem3-imserso-theme .ys-brand img,
 .ysystem3-imserso-theme .ys-a4-logo,
 .ysystem3-imserso-theme .ys-a4-extra-logo {
-  border-radius: 6px;
-  background: var(--ims-panel);
-  box-shadow: 0 2px 10px var(--ims-shadow);
+  width: auto;
+  max-width: 128px;
+  height: 44px;
+  object-fit: contain;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.ysystem3-imserso-theme .ys-a4-logo,
+.ysystem3-imserso-theme .ys-a4-extra-logo {
+  height: 64px;
+  max-width: 180px;
+}
+
+.ysystem3-imserso-theme .ys-brand {
+  align-items: center;
+  gap: 10px;
+}
+
+.ysystem3-imserso-theme .ys-brand strong {
+  display: none;
 }
 
 .ysystem3-imserso-theme .ys-brand strong,
@@ -58,7 +78,8 @@ body.ys-imserso-module-active {
 }
 
 .ysystem3-imserso-theme .ys-brand span {
-  color: #fff5de;
+  color: var(--ims-secondary);
+  font-weight: 800;
 }
 
 .ysystem3-imserso-theme .ys-card,
@@ -128,9 +149,7 @@ body.ys-imserso-module-active {
   padding: 10px 12px;
   border: 1px solid var(--ims-border);
   border-radius: 8px;
-  background:
-    linear-gradient(rgba(255, 249, 234, 0.9), rgba(255, 249, 234, 0.94)),
-    url("../assets/branding/help-bg.webp") center / cover;
+  background: #fff9ea;
   color: var(--ims-ink);
 }
 
@@ -184,9 +203,7 @@ body.ys-imserso-module-active {
 .ys-imserso-module-active .chat-message .ims-chat-card {
   border: 1px solid var(--ims-border);
   border-radius: 8px;
-  background:
-    linear-gradient(rgba(255, 249, 234, 0.94), rgba(247, 232, 197, 0.94)),
-    url("../assets/branding/watermark.webp") right bottom / 120px auto no-repeat;
+  background: #fff9ea;
   color: var(--ims-ink);
 }
 
@@ -202,9 +219,7 @@ body.ys-imserso-module-active {
 .ims-context-help.ysystem3-imserso-theme {
   border: 1px solid var(--ims-border);
   border-radius: 8px;
-  background:
-    linear-gradient(rgba(255, 249, 234, 0.95), rgba(255, 245, 222, 0.96)),
-    url("../assets/branding/help-bg.webp") center / cover;
+  background: #fff9ea;
   color: var(--ims-ink);
   box-shadow: 0 14px 40px var(--ims-shadow);
 }
@@ -224,21 +239,35 @@ body.ys-imserso-module-active {
   display: none;
 }
 
-.ysystem3-imserso-theme.ims-sheet::after,
-.ysystem3-imserso-theme.ims-creator::after {
-  content: "";
-  pointer-events: none;
-  position: absolute;
-  right: 12px;
-  bottom: 12px;
-  width: 92px;
-  height: 92px;
-  opacity: 0.12;
-  background: url("../assets/branding/watermark.webp") center / contain no-repeat;
-}
-
 .ysystem3-imserso-theme .ims-creator-main,
 .ysystem3-imserso-theme .ys-body,
 .ysystem3-imserso-theme .ims-body {
   scrollbar-color: var(--ims-primary) var(--ims-paper);
+}
+
+.ysystem3-imserso-directory {
+  flex-wrap: wrap;
+  border-top: 1px solid var(--ims-border);
+  background: #0b0a12;
+}
+
+.ysystem3-imserso-directory button {
+  min-width: 0;
+  flex: 1 1 130px;
+  height: 32px;
+  padding: 4px 8px;
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: none;
+  background: #fff5de;
+  color: var(--ims-ink);
+}
+
+.ysystem3-imserso-theme .ys-skill-row button span,
+.ysystem3-imserso-theme .ims-skill-row button {
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+  line-height: 1.1;
 }

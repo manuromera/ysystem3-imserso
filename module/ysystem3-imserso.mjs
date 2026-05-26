@@ -9,6 +9,45 @@ const MODULE_ROOT = `modules/${MODULE_ID}`;
 const ASSET_ROOT = `${MODULE_ROOT}/assets`;
 const ITEM_ICON_PATH = `${ASSET_ROOT}/icons`;
 const BRANDING_PATH = `${ASSET_ROOT}/branding`;
+const LOGO_PATH = `${BRANDING_PATH}/imserso-logo.webp`;
+const IMS_ATTRS = {
+  car: { label: "Don de gentes", short: "Don" },
+  des: { label: "Soltura", short: "Paso" },
+  fue: { label: "Aguante", short: "Brio" },
+  int: { label: "Sabiduria", short: "Saber" },
+  per: { label: "Vista", short: "Vista" }
+};
+const IMS_SKILLS = {
+  atletismo: "Paseo y escaleras",
+  auxilio: "Botiquin",
+  conducir: "Volante",
+  conversacion: "Chachara",
+  cultura: "Cultura de almanaque",
+  entorno: "Callejeo turistico",
+  fuerzaBruta: "Tirar de rinon",
+  idiomaExtranjero1: "Chapurrear I",
+  idiomaExtranjero2: "Chapurrear II",
+  informacion: "Papeleo y movil",
+  intimidacion: "Bronca",
+  lucha: "Manotazo",
+  mecanica: "Manitas",
+  memoria: "Batallitas",
+  observacion: "Ojo avizor",
+  ocultacion: "Esconder el tupper",
+  oido: "Oido fino",
+  psicologia: "Calar al personal",
+  punteria: "Tino",
+  rastreo: "Seguir la pista",
+  seduccion: "Piquito de oro",
+  sigilo: "Pasar sin ruido",
+  simulacion: "Disimulo",
+  supervivencia: "Apañarse"
+};
+const IMS_FIXED = {
+  agilidad: "Reflejos",
+  aplomo: "Temple",
+  perspicacia: "Ojo clinico"
+};
 const RANDOM_PLACES = [
   "recepcion del hotel",
   "autobus de excursion",
@@ -151,6 +190,9 @@ function registerHandlebarsHelpers() {
   Handlebars.registerHelper("imsHelpTitle", (key) => help(key).title);
   Handlebars.registerHelper("imsHelpText", (key) => help(key).text);
   Handlebars.registerHelper("imsItemIcon", (type) => iconForItemType(type));
+  Handlebars.registerHelper("imsAttr", (key) => imsersoAttr(key).short);
+  Handlebars.registerHelper("imsSkill", (key) => imsersoSkill(key));
+  Handlebars.registerHelper("ysFixed", (key) => IMS_FIXED[key] ?? key);
 }
 
 export class ImsersoVariantActorSheet extends ImsersoActorSheet {
@@ -169,11 +211,27 @@ export class ImsersoVariantActorSheet extends ImsersoActorSheet {
   async getData() {
     const context = await super.getData();
     context.themeClass = THEME_CLASS;
-    context.logoPath = `${BRANDING_PATH}/module-icon.png`;
-    context.sheetHeaderPath = `${BRANDING_PATH}/sheet-header.png`;
-    context.watermarkPath = `${BRANDING_PATH}/watermark.webp`;
+    context.logoPath = LOGO_PATH;
     context.imsHelp = localization.help ?? {};
     context.imsLabels = localization.terms ?? {};
+    context.atributos = (context.atributos ?? []).map((row) => ({
+      ...row,
+      ...imsersoAttr(row.key)
+    }));
+    context.habilidades = (context.habilidades ?? []).map((row) => ({
+      ...row,
+      label: imsersoSkill(row.key),
+      attrLabel: imsersoAttr(row.atributo).short
+    }));
+    context.skillOptions = (context.skillOptions ?? []).map((row) => ({
+      ...row,
+      label: imsersoSkill(row.key),
+      attrLabel: imsersoAttr(row.atributo).short
+    }));
+    if (context.effectiveAttack) {
+      context.effectiveAttack.skillLabel = imsersoSkill(context.effectiveAttack.skill);
+      context.effectiveAttack.attrLabel = imsersoAttr(context.effectiveAttack.attr).short;
+    }
 
     context.itemSections = Object.entries(context.itemsByType ?? {})
       .filter(([, items]) => items.length)
@@ -267,7 +325,7 @@ export class ImsersoVariantItemSheet extends ImsersoItemSheet {
     context.themeClass = THEME_CLASS;
     context.itemTypeLabel = term(this.item.type);
     context.itemIcon = iconForItemType(this.item.type);
-    context.logoPath = `${BRANDING_PATH}/module-icon.png`;
+    context.logoPath = LOGO_PATH;
     return context;
   }
 }
@@ -291,6 +349,16 @@ export class ImsersoCharacterCreator extends YsystemCharacterCreator {
     context.themeClass = THEME_CLASS;
     context.imsHelp = localization.help ?? {};
     context.imsGeneratorSummary = this._generatorSummary();
+    context.atributos = (context.atributos ?? []).map((row) => ({
+      ...row,
+      label: imsersoAttr(row.key).label,
+      short: imsersoAttr(row.key).short
+    }));
+    context.habilidades = (context.habilidades ?? []).map((row) => ({
+      ...row,
+      label: imsersoSkill(row.key),
+      attr: imsersoAttr(IMSERSO.habilidades[row.key]?.atributo).short
+    }));
     return context;
   }
 
@@ -511,6 +579,14 @@ function iconForItemType(type) {
   return mapped ? `${ITEM_ICON_PATH}/${mapped}.webp` : "";
 }
 
+function imsersoAttr(key) {
+  return IMS_ATTRS[key] ?? { label: key, short: key };
+}
+
+function imsersoSkill(key) {
+  return IMS_SKILLS[key] ?? labelForSkill(key);
+}
+
 function applyGlobalThemeClass() {
   document.body?.classList.add(THEME_CLASS);
   document.body?.classList.add("ys-imserso-module-active");
@@ -570,7 +646,7 @@ function localizeRenderedText(root) {
 function imsChatCard(title, lines) {
   return `
     <div class="ims-chat-card ims-imserso-card ${THEME_CLASS}">
-      <header><img src="${BRANDING_PATH}/module-icon.png" alt=""><h3>${escapeHtml(title)}</h3></header>
+      <header><img src="${LOGO_PATH}" alt=""><h3>${escapeHtml(title)}</h3></header>
       ${lines.map((line) => `<p>${line}</p>`).join("")}
     </div>`;
 }
