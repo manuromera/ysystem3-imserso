@@ -1,0 +1,43 @@
+{
+  "moduleId": "ysystem3-imserso",
+  "moduleTitle": "IMSERSO to the Limit — Módulo de ambientación para YSYSTEM3",
+  "requiresSystem": "ysystem3-srd",
+  "palette": {
+    "paper": "#F7E8C5",
+    "paper2": "#FFF5DE",
+    "ink": "#3B2C22",
+    "mutedInk": "#6A5547",
+    "primary": "#E16C2D",
+    "secondary": "#2D8195",
+    "accent": "#E4B556",
+    "olive": "#728248",
+    "danger": "#B34A35",
+    "panel": "#FFF9EA",
+    "border": "#B8905A",
+    "shadow": "rgba(0,0,0,0.18)"
+  },
+  "fonts": {
+    "title": "serif / slab",
+    "body": "humanist sans",
+    "notes": "handwritten accent only in small decorative labels"
+  },
+  "motifs": [
+    "sol mediterráneo",
+    "postal de costa",
+    "autobús de excursión",
+    "cartón de bingo",
+    "sombrero de paja",
+    "pastillero semanal",
+    "bolsa de viaje",
+    "pulsera de hotel"
+  ],
+  "cssTargets": [
+    "actor sheets",
+    "pnj sheets",
+    "item sheets",
+    "chat cards",
+    "context help",
+    "generator dialogs",
+    "settings panels"
+  ]
+}

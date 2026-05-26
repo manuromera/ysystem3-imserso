@@ -1,0 +1,20 @@
+{
+  "branding": {
+    "moduleIcon": "assets/branding/module-icon.png",
+    "moduleCover": "assets/branding/module-cover.png",
+    "sheetHeader": "assets/branding/sheet-header.png",
+    "sheetBackground": "assets/branding/sheet-bg.webp",
+    "helpBackground": "assets/branding/help-bg.webp",
+    "watermark": "assets/branding/watermark.webp"
+  },
+  "itemIcons": {
+    "arma": "assets/icons/arma.webp",
+    "armadura": "assets/icons/armadura.webp",
+    "escudo": "assets/icons/escudo.webp",
+    "objeto": "assets/icons/objeto.webp",
+    "poder": "assets/icons/poder.webp",
+    "talento": "assets/icons/talento.webp",
+    "arquetipo": "assets/icons/arquetipo.webp",
+    "equipo": "assets/icons/equipo.webp"
+  }
+}

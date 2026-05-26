@@ -1,0 +1,244 @@
+:root {
+  --ims-paper: #f7e8c5;
+  --ims-paper-2: #fff5de;
+  --ims-ink: #3b2c22;
+  --ims-muted-ink: #6a5547;
+  --ims-primary: #e16c2d;
+  --ims-secondary: #2d8195;
+  --ims-accent: #e4b556;
+  --ims-olive: #728248;
+  --ims-danger: #b34a35;
+  --ims-panel: #fff9ea;
+  --ims-border: #b8905a;
+  --ims-shadow: rgba(0, 0, 0, 0.18);
+}
+
+body.ys-imserso-module-active {
+  --color-border-highlight: var(--ims-primary);
+  --color-shadow-primary: rgba(225, 108, 45, 0.35);
+}
+
+.ysystem3-imserso-theme.window-app,
+.ysystem3-imserso-theme .window-content,
+.ysystem3-imserso-theme.ims-sheet,
+.ysystem3-imserso-theme.ims-creator {
+  position: relative;
+  color: var(--ims-ink);
+  background:
+    linear-gradient(rgba(255, 245, 222, 0.88), rgba(255, 245, 222, 0.9)),
+    url("../assets/branding/sheet-bg.webp") center / cover;
+}
+
+.ysystem3-imserso-theme .ys-screen-header,
+.ysystem3-imserso-theme .ims-paper-header,
+.ysystem3-imserso-theme .ims-extra-header,
+.ysystem3-imserso-theme .ims-item-header,
+.ysystem3-imserso-theme .ims-creator-header {
+  border-color: var(--ims-border);
+  background:
+    linear-gradient(90deg, rgba(59, 44, 34, 0.82), rgba(45, 129, 149, 0.62)),
+    url("../assets/branding/sheet-header.png") center / cover;
+  color: #fff9ea;
+}
+
+.ysystem3-imserso-theme .ys-brand img,
+.ysystem3-imserso-theme .ys-a4-logo,
+.ysystem3-imserso-theme .ys-a4-extra-logo {
+  border-radius: 6px;
+  background: var(--ims-panel);
+  box-shadow: 0 2px 10px var(--ims-shadow);
+}
+
+.ysystem3-imserso-theme .ys-brand strong,
+.ysystem3-imserso-theme .ims-paper h2,
+.ysystem3-imserso-theme .ims-extra-card h3,
+.ysystem3-imserso-theme .ims-item-title-block span {
+  color: var(--ims-primary);
+  letter-spacing: 0;
+}
+
+.ysystem3-imserso-theme .ys-brand span {
+  color: #fff5de;
+}
+
+.ysystem3-imserso-theme .ys-card,
+.ysystem3-imserso-theme .ims-number-section,
+.ysystem3-imserso-theme .ims-extra-card,
+.ysystem3-imserso-theme .ims-item-panel,
+.ysystem3-imserso-theme .ims-creator-card,
+.ysystem3-imserso-theme .ims-archetype-summary,
+.ysystem3-imserso-theme .ims-derived-panel,
+.ysystem3-imserso-theme .ims-summary-grid > div {
+  border: 1px solid var(--ims-border);
+  border-radius: 8px;
+  background: rgba(255, 249, 234, 0.94);
+  box-shadow: 0 2px 8px rgba(59, 44, 34, 0.12);
+}
+
+.ysystem3-imserso-theme .ys-tabs,
+.ysystem3-imserso-theme .ims-tabs,
+.ysystem3-imserso-theme .ims-creator-steps {
+  background: #f7e8c5;
+  border-color: var(--ims-border);
+}
+
+.ysystem3-imserso-theme .ys-tabs .item.active,
+.ysystem3-imserso-theme .ims-tabs .item.active,
+.ysystem3-imserso-theme .ims-creator-steps button.active {
+  background: var(--ims-secondary);
+  color: white;
+}
+
+.ysystem3-imserso-theme button,
+.ysystem3-imserso-theme .ys-action-grid button,
+.ysystem3-imserso-theme .ims-chat-action {
+  border: 1px solid var(--ims-border);
+  border-radius: 6px;
+  background: linear-gradient(#fff9ea, #f7e8c5);
+  color: var(--ims-ink);
+}
+
+.ysystem3-imserso-theme button:hover,
+.ysystem3-imserso-theme button:focus {
+  border-color: var(--ims-primary);
+  box-shadow: 0 0 0 2px rgba(225, 108, 45, 0.18);
+}
+
+.ysystem3-imserso-theme input,
+.ysystem3-imserso-theme textarea,
+.ysystem3-imserso-theme select {
+  border: 1px solid #b8905a;
+  border-radius: 5px;
+  background: #fffdf6;
+  color: var(--ims-ink);
+}
+
+.ysystem3-imserso-theme .ys-title-input,
+.ysystem3-imserso-theme .ims-title-input {
+  color: var(--ims-ink);
+  background: rgba(255, 253, 246, 0.92);
+}
+
+.ysystem3-imserso-theme .ims-help-box {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  gap: 4px 12px;
+  align-items: start;
+  margin: 8px;
+  padding: 10px 12px;
+  border: 1px solid var(--ims-border);
+  border-radius: 8px;
+  background:
+    linear-gradient(rgba(255, 249, 234, 0.9), rgba(255, 249, 234, 0.94)),
+    url("../assets/branding/help-bg.webp") center / cover;
+  color: var(--ims-ink);
+}
+
+.ysystem3-imserso-theme .ims-help-box strong {
+  color: var(--ims-secondary);
+}
+
+.ysystem3-imserso-theme .ims-help-box p {
+  margin: 0;
+  color: var(--ims-muted-ink);
+}
+
+.ysystem3-imserso-theme .ims-health-track button.active,
+.ysystem3-imserso-theme .ys-health-track button.active {
+  background: var(--ims-olive);
+  color: white;
+}
+
+.ysystem3-imserso-theme .ims-stability-track button.active,
+.ysystem3-imserso-theme .ys-stability-track button.active {
+  background: var(--ims-secondary);
+  color: white;
+}
+
+.ysystem3-imserso-theme .ims-health-track button.threshold,
+.ysystem3-imserso-theme .ys-health-track button.threshold,
+.ysystem3-imserso-theme .ims-stability-track button.threshold,
+.ysystem3-imserso-theme .ys-stability-track button.threshold {
+  outline: 2px solid var(--ims-accent);
+}
+
+.ysystem3-imserso-theme .item img,
+.ysystem3-imserso-theme .ys-quick-item img,
+.ysystem3-imserso-theme .ims-item-header > img {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  border: 1px solid var(--ims-border);
+  border-radius: 6px;
+  background: var(--ims-paper-2);
+}
+
+.ysystem3-imserso-theme .item.equipped,
+.ysystem3-imserso-theme .ys-quick-item.equipped {
+  border-color: var(--ims-secondary);
+  background: rgba(45, 129, 149, 0.12);
+}
+
+.ims-chat-message.ysystem3-imserso-theme,
+.ims-chat-card.ysystem3-imserso-theme,
+.ys-imserso-module-active .chat-message .ims-chat-card {
+  border: 1px solid var(--ims-border);
+  border-radius: 8px;
+  background:
+    linear-gradient(rgba(255, 249, 234, 0.94), rgba(247, 232, 197, 0.94)),
+    url("../assets/branding/watermark.webp") right bottom / 120px auto no-repeat;
+  color: var(--ims-ink);
+}
+
+.ys-imserso-module-active .chat-message .ims-chat-card header {
+  border-bottom: 1px solid rgba(184, 144, 90, 0.5);
+}
+
+.ys-imserso-module-active .chat-message .ims-roll-total {
+  color: white;
+  background: var(--ims-primary);
+}
+
+.ims-context-help.ysystem3-imserso-theme {
+  border: 1px solid var(--ims-border);
+  border-radius: 8px;
+  background:
+    linear-gradient(rgba(255, 249, 234, 0.95), rgba(255, 245, 222, 0.96)),
+    url("../assets/branding/help-bg.webp") center / cover;
+  color: var(--ims-ink);
+  box-shadow: 0 14px 40px var(--ims-shadow);
+}
+
+.ims-context-help.ysystem3-imserso-theme header span {
+  color: var(--ims-secondary);
+}
+
+.ysystem3-imserso-directory {
+  display: flex;
+  gap: 6px;
+  padding: 6px;
+}
+
+.ys-imserso-module-active [data-ys-create-personaje],
+.ys-imserso-module-active [data-ys-create-pnj] {
+  display: none;
+}
+
+.ysystem3-imserso-theme.ims-sheet::after,
+.ysystem3-imserso-theme.ims-creator::after {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  width: 92px;
+  height: 92px;
+  opacity: 0.12;
+  background: url("../assets/branding/watermark.webp") center / contain no-repeat;
+}
+
+.ysystem3-imserso-theme .ims-creator-main,
+.ysystem3-imserso-theme .ys-body,
+.ysystem3-imserso-theme .ims-body {
+  scrollbar-color: var(--ims-primary) var(--ims-paper);
+}

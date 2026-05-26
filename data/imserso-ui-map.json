@@ -1,0 +1,34 @@
+{
+  "systemTermsToOverride": {
+    "proezas": "Yayopuntos",
+    "equipo": "Equipaje",
+    "arma": "Arma improvisada",
+    "armadura": "Protección",
+    "escudo": "Cobertura",
+    "objeto": "Cachivache",
+    "poder": "Travesura",
+    "talento": "Talento",
+    "arquetipo": "Tipo de jubilado",
+    "profesion": "Antiguo oficio"
+  },
+  "visualOverrides": {
+    "themeClass": "ysystem3-imserso-theme",
+    "sheetHeaderUsesImage": true,
+    "helpPanelsUseImage": true,
+    "chatCardsUseWarmPanel": true
+  },
+  "generatorOverrides": {
+    "characterGenerator": "use data/imserso-generator-tables.json",
+    "npcGenerator": "use data/imserso-generator-tables.json",
+    "preferMotifs": [
+      "viaje organizado",
+      "balneario",
+      "autocar",
+      "hotel de costa",
+      "club social",
+      "bingo",
+      "excursión cultural",
+      "romería / verbena"
+    ]
+  }
+}

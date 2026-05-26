@@ -1,0 +1,55 @@
+{
+  "id": "ysystem3-imserso",
+  "title": "IMSERSO to the Limit para YSYSTEM3",
+  "description": "Modulo de ambientacion, apariencia, terminologia y generadores para usar IMSERSO to the Limit sobre el sistema ysystem3-srd.",
+  "version": "0.1.0",
+  "url": "https://github.com/ManuRomera/ysystem3-imserso",
+  "manifest": "https://raw.githubusercontent.com/ManuRomera/ysystem3-imserso/main/module.json",
+  "download": "https://github.com/ManuRomera/ysystem3-imserso/releases/download/v0.1.0/ysystem3-imserso.zip",
+  "readme": "README.md",
+  "authors": [
+    {
+      "name": "Manu Romera"
+    }
+  ],
+  "compatibility": {
+    "minimum": "11",
+    "verified": "13.351",
+    "maximum": "13"
+  },
+  "relationships": {
+    "systems": [
+      {
+        "id": "ysystem3-srd",
+        "type": "system",
+        "compatibility": {
+          "minimum": "0.3.14"
+        }
+      }
+    ]
+  },
+  "esmodules": [
+    "module/ysystem3-imserso.mjs"
+  ],
+  "styles": [
+    "styles/ysystem3-imserso.css"
+  ],
+  "languages": [
+    {
+      "lang": "es",
+      "name": "Español",
+      "path": "lang/es.json"
+    }
+  ],
+  "packs": [],
+  "media": [
+    {
+      "type": "cover",
+      "url": "modules/ysystem3-imserso/assets/branding/module-cover.png"
+    },
+    {
+      "type": "icon",
+      "url": "modules/ysystem3-imserso/assets/branding/module-icon.png"
+    }
+  ]
+}

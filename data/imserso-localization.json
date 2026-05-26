@@ -1,0 +1,77 @@
+{
+  "ui": {
+    "moduleTitle": "IMSERSO to the Limit",
+    "moduleSubtitle": "Módulo de ambientación para YSYSTEM3",
+    "generatorTitlePJ": "Generador de jubilados",
+    "generatorTitlePNJ": "Generador de PNJ del viaje",
+    "createCharacter": "Crear jubilado",
+    "createNPC": "Crear PNJ",
+    "quickRules": "Chuleta del viajero",
+    "help": "Ayuda del viajero",
+    "rollAchaque": "Tirar achaque",
+    "rollProfession": "Tirar antiguo oficio",
+    "rollTripGoal": "Tirar objetivo del viaje",
+    "rollAttitude": "Tirar talante",
+    "itemSectionWeapons": "Armas improvisadas",
+    "itemSectionArmor": "Protecciones",
+    "itemSectionObjects": "Cachivaches",
+    "itemSectionTalents": "Talentos",
+    "itemSectionPowers": "Travesuras",
+    "itemSectionArchetypes": "Tipos de jubilado"
+  },
+  "terms": {
+    "proezas": "Yayopuntos",
+    "salud": "Salud",
+    "estabilidad": "Estabilidad",
+    "rf": "Resistencia física",
+    "rm": "Resistencia mental",
+    "arma": "Arma improvisada",
+    "armadura": "Protección",
+    "escudo": "Cobertura",
+    "objeto": "Cachivache",
+    "poder": "Travesura",
+    "talento": "Talento",
+    "arquetipo": "Tipo de jubilado",
+    "profesion": "Antiguo oficio",
+    "ocupacion": "Papel en el viaje",
+    "rasgo": "Talante",
+    "achaque": "Achaque",
+    "equipo": "Equipaje",
+    "pj": "Jubilado",
+    "pnj": "PNJ del viaje"
+  },
+  "help": {
+    "yayopuntos": {
+      "title": "¿Qué son los Yayopuntos?",
+      "text": "Los Yayopuntos representan ese punto de orgullo, experiencia y testarudez que hace que una persona mayor siga en pie cuando cualquiera más joven ya se habría rendido."
+    },
+    "salud": {
+      "title": "Salud",
+      "text": "La Salud mide lo castigado que está el cuerpo. Golpes, caídas, resbalones, disgustos físicos y excesos del bufé libre la reducen."
+    },
+    "estabilidad": {
+      "title": "Estabilidad",
+      "text": "La Estabilidad refleja el ánimo, la templanza y la capacidad de no venirse abajo cuando todo el viaje se va al garete."
+    },
+    "rf": {
+      "title": "Resistencia física",
+      "text": "Se usa para aguantar esfuerzo, achaques, cansancio, dolor o secuelas corporales."
+    },
+    "rm": {
+      "title": "Resistencia mental",
+      "text": "Se usa para resistir presión, miedo, humillaciones, gaslighting turístico y demás ataques al espíritu."
+    },
+    "achaque": {
+      "title": "Achaques",
+      "text": "Los achaques definen esas limitaciones pequeñas o grandes que te complican la vida… y que muchas veces acaban haciendo al personaje todavía más divertido."
+    },
+    "profesion": {
+      "title": "Antiguo oficio",
+      "text": "Antes de jubilarse, todo el mundo fue algo. El antiguo oficio da color, conocimientos útiles y una forma concreta de mirar el mundo."
+    },
+    "generador": {
+      "title": "Generador de jubilados y PNJ",
+      "text": "El generador debe priorizar nombres, oficios, aficiones, achaques, objetivos de viaje y manías que peguen con el tono mediterráneo, gamberro y entrañable de IMSERSO to the Limit."
+    }
+  }
+}
