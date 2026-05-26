@@ -35,7 +35,10 @@
     "profesion": "Antiguo oficio",
     "ocupacion": "Papel en el viaje",
     "rasgo": "Talante",
-    "achaque": "Achaque",
+    "achaque": "Achaques",
+    "achaqueMayor": "Achaque mayor",
+    "achaqueMenor": "Achaque menor",
+    "recuerdo": "Recuerdo",
     "equipo": "Equipaje",
     "pj": "Jubilado",
     "pnj": "PNJ del viaje"

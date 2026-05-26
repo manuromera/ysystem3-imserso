@@ -489,7 +489,7 @@ export class ImsersoCharacterCreator extends YsystemCharacterCreator {
       content: imsChatCard("Jubilado preparado", [
         `<strong>${escapeHtml(generated.name)}</strong> · ${escapeHtml(generated.summary.arquetipo)}.`,
         `<strong>${term("profesion")}:</strong> ${escapeHtml(generated.summary.oficio)}.`,
-        `<strong>${term("achaque")}:</strong> ${escapeHtml(generated.summary.achaque)}.`,
+        `<strong>${term("achaqueMayor")}:</strong> ${escapeHtml(generated.summary.achaque)}.`,
         `<strong>Objetivo:</strong> ${escapeHtml(generated.summary.objetivo)}.`,
         `<strong>3D:</strong> ${escapeHtml(generated.selected3.map(imsersoSkill).join(", "))}.`
       ])
@@ -520,10 +520,11 @@ export class ImsersoCharacterCreator extends YsystemCharacterCreator {
 
   _rollDefects() {
     this._readForm();
-    const achaque = choice(generatorTables.achaques);
+    const achaqueMayor = choice(generatorTables.achaques);
+    const achaqueMenor = choice((generatorTables.achaques ?? []).filter((entry) => entry !== achaqueMayor)) || achaqueMayor;
     const quirk = choice(generatorTables.quirks);
-    this.state.defectos.leve = `${term("achaque")}: ${achaque}.`;
-    this.state.defectos.grave = `Mania peligrosa: ${quirk}.`;
+    this.state.defectos.leve = `${term("achaqueMenor")}: ${achaqueMenor}.`;
+    this.state.defectos.grave = `${term("achaqueMayor")}: ${achaqueMayor}. Mania: ${quirk}.`;
     this.render(false);
   }
 
@@ -622,6 +623,7 @@ async function buildRandomPj(base) {
   const oficio = choice(generatorTables.formerProfessions);
   const origen = choice(generatorTables.origins);
   const achaque = choice(generatorTables.achaques);
+  const achaqueMenor = choice((generatorTables.achaques ?? []).filter((entry) => entry !== achaque)) || achaque;
   const talante = choice(generatorTables.attitudes);
   const aficion = choice(generatorTables.hobbies);
   const objetivo = choice(generatorTables.tripGoals);
@@ -645,8 +647,8 @@ async function buildRandomPj(base) {
       situacionFamiliar: `Viaja desde ${origen}; ${mania}.`
     },
     defectos: {
-      leve: `${term("achaque")}: ${achaque}.`,
-      grave: `Orgullo de jubilado: ${talante}; ${mania}.`
+      leve: `${term("achaqueMenor")}: ${achaqueMenor}.`,
+      grave: `${term("achaqueMayor")}: ${achaque}. Mania: ${talante}; ${mania}.`
     },
     summary: { oficio, origen, achaque, talante, aficion, objetivo, arquetipo }
   };
@@ -737,6 +739,10 @@ function term(key) {
       proezas: "Yayopoints",
       rf: "Jamacuco",
       rm: "Resistencia mental",
+      achaque: "Achaques",
+      achaqueMayor: "Achaque mayor",
+      achaqueMenor: "Achaque menor",
+      recuerdo: "Recuerdo",
       arquetipo: "Arquetipo de jubilado",
       talento: "Talento",
       equipo: "Pertenencias",
@@ -888,11 +894,20 @@ function applyGlobalThemeClass() {
 function applyAppTheme(app, html) {
   if (game.system.id !== SYSTEM_ID) return;
   const jq = asJQuery(html);
+  if (!shouldThemeApp(app, jq)) return;
   const root = jq.closest(".window-app")[0] ?? app?.element?.[0] ?? jq[0];
   root?.classList?.add(THEME_CLASS);
   root?.classList?.remove("ys-imserso-classic", "ys-imserso-ysystem3");
   root?.classList?.add(modeClass());
   jq.find(".ims-sheet, .ys-screen-sheet, .ys-a4-sheet, .ims-item, .ims-creator, .ims-chat-card").addClass(`${THEME_CLASS} ${modeClass()}`);
+}
+
+function shouldThemeApp(app, jq) {
+  if (app instanceof ImsersoVariantActorSheet || app instanceof ImsersoVariantItemSheet || app instanceof ImsersoCharacterCreator) return true;
+  if (app?.actor?.type || app?.item?.type) return true;
+  const appName = app?.constructor?.name ?? "";
+  if (/Ysystem|Imserso/i.test(appName)) return true;
+  return !!jq.find(".ims-sheet, .ys-screen-sheet, .ys-a4-sheet, .ims-item, .ims-creator, .ims-chat-card, [data-roll-skill], [data-roll-attack]").length;
 }
 
 function injectDirectoryControls(html) {

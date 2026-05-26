@@ -26,6 +26,24 @@ body.ys-imserso-module-active {
   background: #fff5de;
 }
 
+.ysystem3-imserso-theme.window-app .window-header {
+  background: #2f2119;
+  color: #fff8e8;
+  text-shadow: none;
+}
+
+.ysystem3-imserso-theme.window-app .window-header .window-title,
+.ysystem3-imserso-theme.window-app .window-header a,
+.ysystem3-imserso-theme.window-app .window-header button {
+  color: #fff8e8;
+}
+
+.ysystem3-imserso-theme.window-app .window-header a:hover,
+.ysystem3-imserso-theme.window-app .window-header button:hover {
+  color: #ffffff;
+  text-shadow: 0 0 5px rgba(255, 245, 222, 0.65);
+}
+
 .ysystem3-imserso-theme.ims-sheet,
 .ysystem3-imserso-theme.ims-creator {
   position: relative;
@@ -167,10 +185,99 @@ body.ys-imserso-module-active {
   color: var(--ims-muted-ink);
 }
 
+.ysystem3-imserso-theme .ims-health-track button,
+.ysystem3-imserso-theme .ys-health-track button,
 .ysystem3-imserso-theme .ims-health-track button.active,
 .ysystem3-imserso-theme .ys-health-track button.active {
-  background: var(--ims-olive);
-  color: white;
+  background: transparent;
+  color: var(--ims-ink);
+}
+
+.ysystem3-imserso-theme .ims-health-zone-labels .zone-safe,
+.ysystem3-imserso-theme .ys-health-labels .zone-safe {
+  background: #d7efd9;
+  color: #173d21;
+}
+
+.ysystem3-imserso-theme .ims-health-zone-labels .zone-minus1,
+.ysystem3-imserso-theme .ys-health-labels .zone-minus1 {
+  background: #fff0a8;
+  color: #503900;
+}
+
+.ysystem3-imserso-theme .ims-health-zone-labels .zone-minus2,
+.ysystem3-imserso-theme .ys-health-labels .zone-minus2 {
+  background: #ffd083;
+  color: #552b00;
+}
+
+.ysystem3-imserso-theme .ims-health-zone-labels .zone-minus3,
+.ysystem3-imserso-theme .ys-health-labels .zone-minus3,
+.ysystem3-imserso-theme .ims-health-zone-labels .zone-uci,
+.ysystem3-imserso-theme .ys-health-labels .zone-uci {
+  background: #f3b0a8;
+  color: #5b100a;
+}
+
+.ysystem3-imserso-theme .ims-health-track .zone-safe span,
+.ysystem3-imserso-theme .ys-health-track .zone-safe span {
+  border-color: #13652f;
+  background: #d7efd9;
+}
+
+.ysystem3-imserso-theme .ims-health-track .zone-warning span,
+.ysystem3-imserso-theme .ys-health-track .zone-warning span,
+.ysystem3-imserso-theme .ims-health-track .zone-minus1 span,
+.ysystem3-imserso-theme .ys-health-track .zone-minus1 span {
+  border-color: #916300;
+  background: #fff0a8;
+}
+
+.ysystem3-imserso-theme .ims-health-track .zone-minus2 span,
+.ysystem3-imserso-theme .ys-health-track .zone-minus2 span {
+  border-color: #a85500;
+  background: #ffd083;
+}
+
+.ysystem3-imserso-theme .ims-health-track .zone-danger span,
+.ysystem3-imserso-theme .ys-health-track .zone-danger span,
+.ysystem3-imserso-theme .ims-health-track .zone-minus3 span,
+.ysystem3-imserso-theme .ys-health-track .zone-minus3 span,
+.ysystem3-imserso-theme .ims-health-track .zone-uci span,
+.ysystem3-imserso-theme .ys-health-track .zone-uci span {
+  border-color: #8f1010;
+  background: #f3b0a8;
+}
+
+.ysystem3-imserso-theme .ims-health-track .zone-safe.active span,
+.ysystem3-imserso-theme .ys-health-track .zone-safe.active span {
+  background: #2fa84f;
+}
+
+.ysystem3-imserso-theme .ims-health-track .zone-warning.active span,
+.ysystem3-imserso-theme .ys-health-track .zone-warning.active span,
+.ysystem3-imserso-theme .ims-health-track .zone-minus1.active span,
+.ysystem3-imserso-theme .ys-health-track .zone-minus1.active span {
+  background: #f5c542;
+}
+
+.ysystem3-imserso-theme .ims-health-track .zone-minus2.active span,
+.ysystem3-imserso-theme .ys-health-track .zone-minus2.active span {
+  background: #f28c28;
+}
+
+.ysystem3-imserso-theme .ims-health-track .zone-danger.active span,
+.ysystem3-imserso-theme .ys-health-track .zone-danger.active span,
+.ysystem3-imserso-theme .ims-health-track .zone-minus3.active span,
+.ysystem3-imserso-theme .ys-health-track .zone-minus3.active span,
+.ysystem3-imserso-theme .ims-health-track .zone-uci.active span,
+.ysystem3-imserso-theme .ys-health-track .zone-uci.active span {
+  background: #d93b30;
+}
+
+.ysystem3-imserso-theme .ims-health-track .active span,
+.ysystem3-imserso-theme .ys-health-track .active span {
+  box-shadow: inset 0 0 0 4px #fff;
 }
 
 .ysystem3-imserso-theme .ims-stability-track button.active,
@@ -254,6 +361,26 @@ body.ys-imserso-module-active {
 
 .ims-context-help.ysystem3-imserso-theme header span {
   color: var(--ims-secondary);
+}
+
+body.ys-imserso-module-active #context-menu,
+body.ys-imserso-module-active .context-menu {
+  border: 1px solid #b8905a;
+  background: #2f2119;
+  color: #fff8e8;
+}
+
+body.ys-imserso-module-active #context-menu li,
+body.ys-imserso-module-active .context-menu li,
+body.ys-imserso-module-active #context-menu a,
+body.ys-imserso-module-active .context-menu a {
+  color: #fff8e8;
+}
+
+body.ys-imserso-module-active #context-menu li:hover,
+body.ys-imserso-module-active .context-menu li:hover {
+  background: #e16c2d;
+  color: #ffffff;
 }
 
 .ysystem3-imserso-directory {

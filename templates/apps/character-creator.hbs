@@ -41,7 +41,7 @@
         <label class="ims-choice">
           <input type="radio" name="mode" value="aleatorio" data-creator-mode {{imsChecked (eq state.mode "aleatorio")}}>
           <strong>Excursion rapida</strong>
-          <span>Prepara una creacion legal completa con atributos, habilidades, defectos y salud inicial.</span>
+          <span>Prepara una creacion legal completa con atributos, habilidades, achaques y salud inicial.</span>
           <button type="button" data-random-character><i class="fas fa-wand-magic-sparkles"></i> Generar jubilado</button>
         </label>
       </div>
@@ -170,13 +170,13 @@
 
     {{#if (eq stepKey "defectos")}}
     <section class="ims-creator-card">
-      <h2>4. Defectos y {{imsTerm "salud"}} inicial</h2>
+      <h2>4. {{imsTerm "achaque"}} y {{imsTerm "salud"}} inicial</h2>
       <div class="ims-creator-grid two">
-        <label>Defecto leve<input name="defectos.leve" value="{{state.defectos.leve}}"></label>
-        <label>Defecto grave<input name="defectos.grave" value="{{state.defectos.grave}}"></label>
+        <label>{{imsTerm "achaqueMenor"}}<input name="defectos.leve" value="{{state.defectos.leve}}"></label>
+        <label>{{imsTerm "achaqueMayor"}}<input name="defectos.grave" value="{{state.defectos.grave}}"></label>
       </div>
       <div class="ims-creator-actions-inline">
-        <button type="button" data-roll-defects><i class="fas fa-table-list"></i> Generar defectos</button>
+        <button type="button" data-roll-defects><i class="fas fa-table-list"></i> Generar achaques</button>
         <button type="button" data-roll-health><i class="fas fa-dice-six"></i> Tirar {{imsTerm "salud"}} inicial</button>
       </div>
       <div class="ims-derived-panel">

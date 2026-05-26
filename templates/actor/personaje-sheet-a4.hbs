@@ -78,9 +78,11 @@
         </section>
 
         <section class="ims-number-section ims-aches" data-help-type="rule" data-help-key="defectos">
-          <label><strong>Defecto grave</strong><input name="system.defectos.grave" value="{{system.defectos.grave}}"></label>
-          <label><strong>Defecto leve</strong><input name="system.defectos.leve" value="{{system.defectos.leve}}"></label>
+          <label><strong>{{imsTerm "achaqueMayor"}}</strong><input name="system.defectos.grave" value="{{system.defectos.grave}}"></label>
+          <label><strong>{{imsTerm "achaqueMenor"}}</strong><input name="system.defectos.leve" value="{{system.defectos.leve}}"></label>
+          {{#unless imsClassic}}
           <label><strong>Recuerdo cuando...</strong><textarea name="system.recuerdo.nota">{{system.recuerdo.nota}}</textarea></label>
+          {{/unless}}
         </section>
 
         <section class="ims-number-section ims-toolbar-band">

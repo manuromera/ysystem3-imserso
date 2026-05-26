@@ -140,13 +140,15 @@
         </section>
 
         <section class="ys-card ys-compact-card" data-help-type="rule" data-help-key="defectos">
-          <header><h2>Defectos y recuerdo</h2></header>
+          <header><h2>{{imsTerm "achaque"}}{{#unless imsClassic}} y {{imsTerm "recuerdo"}}{{/unless}}</h2></header>
           <div class="ys-form-grid compact">
-            <label>Defecto leve<textarea class="ys-mini-textarea" name="system.defectos.leve">{{system.defectos.leve}}</textarea></label>
-            <label>Defecto grave<textarea class="ys-mini-textarea" name="system.defectos.grave">{{system.defectos.grave}}</textarea></label>
-            <label class="check"><input type="checkbox" name="system.defectos.leveUsado" {{imsChecked system.defectos.leveUsado}}> Defecto leve usado</label>
+            <label>{{imsTerm "achaqueMenor"}}<textarea class="ys-mini-textarea" name="system.defectos.leve">{{system.defectos.leve}}</textarea></label>
+            <label>{{imsTerm "achaqueMayor"}}<textarea class="ys-mini-textarea" name="system.defectos.grave">{{system.defectos.grave}}</textarea></label>
+            <label class="check"><input type="checkbox" name="system.defectos.leveUsado" {{imsChecked system.defectos.leveUsado}}> {{imsTerm "achaqueMenor"}} usado</label>
+            {{#unless imsClassic}}
             <label class="check"><input type="checkbox" name="system.recuerdo.usado" {{imsChecked system.recuerdo.usado}}> Recuerdo usado</label>
             <label>Nota del recuerdo<textarea name="system.recuerdo.nota">{{system.recuerdo.nota}}</textarea></label>
+            {{/unless}}
           </div>
         </section>
       </main>
