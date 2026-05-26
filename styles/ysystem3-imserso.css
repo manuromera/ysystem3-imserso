@@ -54,6 +54,11 @@ body.ys-imserso-module-active {
   box-shadow: none;
 }
 
+.ysystem3-imserso-theme .ys-brand img {
+  max-width: 160px;
+  height: 50px;
+}
+
 .ysystem3-imserso-theme .ys-a4-logo,
 .ysystem3-imserso-theme .ys-a4-extra-logo {
   height: 64px;
@@ -211,6 +216,29 @@ body.ys-imserso-module-active {
   border-bottom: 1px solid rgba(184, 144, 90, 0.5);
 }
 
+.ys-imserso-module-active .chat-message .ims-chat-card header img,
+.ys-imserso-module-active .chat-message .ims-imserso-card header img {
+  display: block;
+  width: auto;
+  max-width: 150px;
+  height: 46px;
+  object-fit: contain;
+  border: 0;
+  background: transparent;
+}
+
+.ys-imserso-module-active .chat-message .ims-chat-card > img,
+.ys-imserso-module-active .chat-message .ims-imserso-card > img {
+  display: block;
+  width: auto;
+  max-width: 160px;
+  max-height: 64px;
+  object-fit: contain;
+  margin: 0 auto 8px;
+  border: 0;
+  background: transparent;
+}
+
 .ys-imserso-module-active .chat-message .ims-roll-total {
   color: white;
   background: var(--ims-primary);
@@ -270,4 +298,38 @@ body.ys-imserso-module-active {
   overflow: visible;
   text-overflow: clip;
   line-height: 1.1;
+}
+
+.ys-imserso-classic [data-tab="estado"],
+.ys-imserso-classic .ys-tab-actions [data-roll-resistencia-mental],
+.ys-imserso-classic .ys-tab-actions [data-rules-heal],
+.ys-imserso-classic [data-roll-reserve],
+.ys-imserso-classic [data-roll-pursuit],
+.ys-imserso-classic [data-roll-fear],
+.ys-imserso-classic [data-hazard-damage],
+.ys-imserso-classic [data-help-key="perspicacia"],
+.ys-imserso-classic [data-help-key="resistenciaMental"],
+.ys-imserso-classic [data-help-key="estabilidad"],
+.ys-imserso-classic [data-help-key="puntoGuion"],
+.ys-imserso-classic .ys-stability-card,
+.ys-imserso-classic [name="system.estabilidad.valor"],
+.ys-imserso-classic [name="system.estabilidad.max"],
+.ys-imserso-classic [name="system.resistenciaMental.valor"],
+.ys-imserso-classic [name="system.puntoGuion.valor"],
+.ys-imserso-classic [name="system.puntoGuion.max"],
+.ys-imserso-classic label:has([name="system.estabilidad.valor"]),
+.ys-imserso-classic label:has([name="system.estabilidad.max"]),
+.ys-imserso-classic label:has([name="system.resistenciaMental.valor"]),
+.ys-imserso-classic label:has([name="system.perspicacia.valor"]),
+.ys-imserso-classic label:has([name="system.perspicacia.manual"]) {
+  display: none !important;
+}
+
+.ys-imserso-classic .ys-value-grid {
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+}
+
+.ys-imserso-classic .ys-health-card,
+.ys-imserso-classic .ys-summary-state {
+  grid-column: 1 / -1;
 }

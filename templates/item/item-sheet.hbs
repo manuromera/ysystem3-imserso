@@ -61,7 +61,7 @@
   {{#if (eq item.type "escudo")}}
   <section class="ims-item-panel">
     <div class="ims-item-fields proteccion-fields">
-      <label>Bonificador a Agilidad<input type="number" name="system.nivel" value="{{system.nivel}}"></label>
+      <label>Bonificador a {{ysFixed "agilidad"}}<input type="number" name="system.nivel" value="{{system.nivel}}"></label>
       <label>Penalizador SRD<input type="number" value="{{protectionPenalty}}" disabled></label>
       <label class="check"><input type="checkbox" name="system.equipado" {{imsChecked system.equipado}}> Equipado</label>
       <label>Automatismo
@@ -171,7 +171,7 @@
       <label>Perfil<input name="system.perfil" value="{{system.perfil}}"></label>
       <label>{{imsTerm "proezas"}}<input type="number" name="system.proezas" value="{{system.proezas}}"></label>
       <label>{{imsTerm "salud"}} base<input type="number" name="system.saludBase" value="{{system.saludBase}}"></label>
-      <label>Resistencia fisica<input type="number" name="system.resistenciaFisica" value="{{system.resistenciaFisica}}"></label>
+      <label>{{imsTerm "rf"}}<input type="number" name="system.resistenciaFisica" value="{{system.resistenciaFisica}}"></label>
       <label>{{imsTerm "talento"}}<input name="system.talentoNombre" value="{{system.talentoNombre}}"></label>
     </div>
   </section>

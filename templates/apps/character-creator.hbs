@@ -25,13 +25,19 @@
         <label class="ims-choice">
           <input type="radio" name="mode" value="libre" data-creator-mode {{imsChecked (eq state.mode "libre")}}>
           <strong>Creacion libre</strong>
+          {{#if imsClassic}}
+          <span>Reparte 0, +2, +4 y +6 entre CAC, GRA, PRE y ROB; marca 4 habilidades a 3D y 6 a 2D.</span>
+          {{else}}
           <span>Reparte 0, +1, +2, +4 y +6 entre atributos; marca 4 habilidades a 3D y 8 a 2D.</span>
+          {{/if}}
         </label>
+        {{#unless imsClassic}}
         <label class="ims-choice">
           <input type="radio" name="mode" value="arquetipo" data-creator-mode {{imsChecked (eq state.mode "arquetipo")}}>
           <strong>Mediante tipo de jubilado</strong>
           <span>Usa una plantilla SRD con atributos, habilidades, Yayopuntos, resistencias y talento ya definidos.</span>
         </label>
+        {{/unless}}
         <label class="ims-choice">
           <input type="radio" name="mode" value="aleatorio" data-creator-mode {{imsChecked (eq state.mode "aleatorio")}}>
           <strong>Excursion rapida</strong>
@@ -134,7 +140,7 @@
       {{else}}
       <section class="ims-creator-card">
         <h2>3. Atributos y habilidades</h2>
-        <p class="ims-creator-note">Reparte una vez cada valor entre atributos: 0, +1, +2, +4 y +6. Despues marca 4 habilidades a 3D y 8 a 2D.</p>
+        <p class="ims-creator-note">{{#if imsClassic}}Reparte una vez cada valor entre atributos clasicos: 0, +2, +4 y +6. Despues marca 4 habilidades a 3D y 6 a 2D.{{else}}Reparte una vez cada valor entre atributos: 0, +1, +2, +4 y +6. Despues marca 4 habilidades a 3D y 8 a 2D.{{/if}}</p>
         <div class="ims-creator-grid four">
           {{#each atributos}}
           <label>{{short}} · {{label}}
@@ -145,7 +151,7 @@
           {{/each}}
         </div>
         <div class="ims-skill-builder">
-          <header><strong>Habilidades</strong><span>3D: {{selected3}}/4 · 2D: {{selected2}}/8</span></header>
+          <header><strong>Habilidades</strong><span>3D: {{selected3}}/{{skillTarget3}} · 2D: {{selected2}}/{{skillTarget2}}</span></header>
           {{#each habilidades}}
           <label>
             <span>{{label}} <small>{{attr}}</small></span>
@@ -186,11 +192,13 @@
       <h2>{{#if isPnj}}3. Resumen antes de crear{{else}}5. Resumen antes de crear{{/if}}</h2>
       <div class="ims-summary-grid">
         <div><strong>{{imsTerm "salud"}}</strong><span>{{#if state.healthRoll}}{{effective.health}}{{else}}pendiente{{/if}}</span></div>
-        <div><strong>{{#if isPnj}}RF{{else}}{{imsTerm "proezas"}}{{/if}}</strong><span>{{#if isPnj}}{{effective.rf}}{{else}}{{effective.proezas}}{{/if}}</span></div>
-        <div><strong>Agilidad</strong><span>{{effective.agilidad}}</span></div>
-        <div><strong>Aplomo</strong><span>{{effective.aplomo}}</span></div>
-        <div><strong>Perspicacia</strong><span>{{effective.perspicacia}}</span></div>
+        <div><strong>{{#if isPnj}}{{imsTerm "rf"}}{{else}}{{imsTerm "proezas"}}{{/if}}</strong><span>{{#if isPnj}}{{effective.rf}}{{else}}{{effective.proezas}}{{/if}}</span></div>
+        <div><strong>{{ysFixed "agilidad"}}</strong><span>{{effective.agilidad}}</span></div>
+        <div><strong>{{ysFixed "aplomo"}}</strong><span>{{effective.aplomo}}</span></div>
+        {{#unless imsClassic}}
+        <div><strong>{{ysFixed "perspicacia"}}</strong><span>{{effective.perspicacia}}</span></div>
         {{#unless isPnj}}<div><strong>{{imsTerm "estabilidad"}}</strong><span>{{effective.estabilidad}}</span></div>{{/unless}}
+        {{/unless}}
       </div>
       {{#if imsGeneratorSummary}}
       <aside class="ims-help-box ims-generator-result">

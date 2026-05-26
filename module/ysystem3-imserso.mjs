@@ -10,14 +10,16 @@ const ASSET_ROOT = `${MODULE_ROOT}/assets`;
 const ITEM_ICON_PATH = `${ASSET_ROOT}/icons`;
 const BRANDING_PATH = `${ASSET_ROOT}/branding`;
 const LOGO_PATH = `${BRANDING_PATH}/imserso-logo.webp`;
-const IMS_ATTRS = {
-  car: { label: "Don de gentes", short: "Don" },
-  des: { label: "Soltura", short: "Paso" },
-  fue: { label: "Aguante", short: "Brio" },
-  int: { label: "Sabiduria", short: "Saber" },
-  per: { label: "Vista", short: "Vista" }
+const MODE_YSYSTEM3 = "ysystem3";
+const MODE_CLASSIC = "classic";
+const IMS_ATTRS_YSYSTEM3 = {
+  car: { label: "Don de gentes", short: "Don", body: "Presencia, labia, simpatia y capacidad para convencer al grupo, al recepcionista o a quien haga falta." },
+  des: { label: "Soltura", short: "Paso", body: "Movimiento, reflejos, sigilo, equilibrio y manejo fino de las manos cuando la excursion se complica." },
+  fue: { label: "Aguante", short: "Brio", body: "Fuerza, constitucion y capacidad para seguir en pie despues de cuestas, empujones, golpes o buffet libre." },
+  int: { label: "Sabiduria", short: "Saber", body: "Cabeza, memoria, cultura practica y capacidad para entender lo que esta pasando antes que los demas." },
+  per: { label: "Vista", short: "Vista", body: "Sentidos, atencion al detalle, punteria y habilidad para ver venir el lio desde la otra punta del paseo maritimo." }
 };
-const IMS_SKILLS = {
+const IMS_SKILLS_YSYSTEM3 = {
   atletismo: "Paseo y escaleras",
   auxilio: "Botiquin",
   conducir: "Volante",
@@ -43,10 +45,90 @@ const IMS_SKILLS = {
   simulacion: "Disimulo",
   supervivencia: "Apañarse"
 };
-const IMS_FIXED = {
+const IMS_FIXED_YSYSTEM3 = {
   agilidad: "Reflejos",
   aplomo: "Temple",
   perspicacia: "Ojo clinico"
+};
+const CLASSIC_ATTRS = {
+  int: {
+    label: "Cacumen",
+    short: "CAC",
+    body: "Lo listo que es el personaje, lo bien que piensa y razona, lo agudos que son sus sentidos y, de forma indirecta, su firmeza mental."
+  },
+  car: {
+    label: "Gracejo",
+    short: "GRA",
+    body: "Carisma y capacidad para relacionarse con otros, convencerlos y venderles la moto cuando hace falta."
+  },
+  des: {
+    label: "Presteza",
+    short: "PRE",
+    body: "Agilidad, sigilo, destreza manual, punteria, reflejos y equilibrio."
+  },
+  fue: {
+    label: "Robustez",
+    short: "ROB",
+    body: "Fuerza fisica, capacidad para levantar pesos o romper cosas, constitucion y Salud."
+  }
+};
+const CLASSIC_SKILLS = {
+  auxilio: { label: "Ambulatorio", attr: "int", body: "Hablar con el medico, entender lo que dice, diagnosticar dolencias, recomendar medicamentos y aplicar primeros auxilios." },
+  mecanica: { label: "Archiperres", attr: "des", body: "Usar, abrir, cerrar o arreglar maquinas, herramientas y mecanismos. Tambien cubre conducir, reparar cacharros y maniobrar con una silla de ruedas." },
+  conversacion: { label: "Batallitas", attr: "car", body: "Dominar una conversacion contando vivencias personales, entretener a alguien o ahuyentar a gente joven." },
+  supervivencia: { label: "Cosas del campo", attr: "des", body: "Trabajos de huerta, campo y pueblo: carretillas, zanjas, podas, fuegos, supervivencia, rastreo y distinguir lo comestible." },
+  simulacion: { label: "Cotilleo", attr: "car", body: "Enterarse de rumores y secretos, sonsacar informacion, mentir, hacerse pasar por otra persona e interpretar intenciones." },
+  intimidacion: { label: "Discusion", attr: "car", body: "Imponerse en una conversacion con argumentos racionales o emocionales, regatear y defender opiniones con vehemencia." },
+  atletismo: { label: "Gimnasia", attr: "des", body: "Movimiento fisico: correr, nadar, saltar, trepar, andar con sigilo o bailar." },
+  conducir: { label: "Ingesta", attr: "fue", body: "Comer, beber, atacar el buffet, detectar venenos en comida o bebida y resistirlos." },
+  informacion: { label: "Internes", attr: "int", body: "Buscar informacion en la web y manejar moviles, tabletas y paneles interactivos." },
+  observacion: { label: "Lentes progresivas", attr: "int", body: "Registrar habitaciones, estancias o maletas, buscar algo concreto y descubrir detalles ocultos." },
+  memoria: { label: "Memoria", attr: "int", body: "Recordar cosas vistas, escuchadas o leidas, sobre todo datos personales o muy concretos." },
+  fuerzaBruta: { label: "Mula parda", attr: "fue", body: "Cualquier accion que requiera fuerza bruta: levantar, romper, empujar, remar o desatascar." },
+  entorno: { label: "Nietos", attr: "des", body: "Cuidar de algo o de alguien, especialmente nietos, y conocer a la juventud, sus gustos y formas de ocio." },
+  punteria: { label: "Petanca", attr: "des", body: "Ganar a la petanca y resolver acciones de punteria y precision, desde tirar una piedra hasta disparar." },
+  seduccion: { label: "Salero", attr: "car", body: "Caer simpatico, cantar, animar, contar chistes, coquetear y conseguir cosas gracias al carisma." },
+  idiomaExtranjero1: { label: "Silbido", attr: "car", body: "Tararear melodias antiguas, imitar sonidos y soltar silbidos para llamar la atencion, indicar algo o espantar." },
+  oido: { label: "Sonotone", attr: "int", body: "Escuchar susurros, identificar sonidos y calcular distancia o direccion de una fuente sonora." },
+  ocultacion: { label: "Sus labores", attr: "des", body: "Tareas domesticas, ordenar, guardar cosas y ocultar objetos entre la ropa o en una habitacion." },
+  cultura: { label: "Telediarios", attr: "int", body: "Saberes generales que podrian haber salido en television, salvo idiomas y cosas de jovenes." },
+  lucha: { label: "Tollinas", attr: "fue", body: "Pegar con punos, cuchillos u otras armas. En pelea se tira para impactar y provocar dano." }
+};
+const CLASSIC_HIDDEN_SKILLS = new Set(["idiomaExtranjero2", "psicologia", "rastreo", "sigilo"]);
+const CLASSIC_FIXED = {
+  agilidad: "Nervio",
+  aplomo: "Bemoles",
+  perspicacia: "Ojo clinico"
+};
+const CLASSIC_RULE_HELP = {
+  proezas: {
+    title: "Yayopoints",
+    body: "Puntos especiales de los jubilados. Permiten repetir dados de una tirada fallada, sumar 1D a una tirada de habilidad, aumentar Bemoles o Nervio durante un turno, o anadir dano a un golpe."
+  },
+  agilidad: {
+    title: "Nervio",
+    body: "Valor fijo que representa vigor fisico y capacidad para esquivar. Se calcula como 3 x dados de Gimnasia + PRE y suele ser la dificultad para impactar o superar fisicamente al personaje."
+  },
+  aplomo: {
+    title: "Bemoles",
+    body: "Valor fijo que representa fuerza de personalidad y arrestos. Se calcula como CAC + 7 y se usa como dificultad frente a varias acciones sociales y tiradas de miedo."
+  },
+  salud: {
+    title: "Salud",
+    body: "En el modo clasico engloba estado fisico y mental. Se pierde por golpes, caidas, quemaduras, disparos, sustos, estres o miedo. Si llega a 0, el PJ muere."
+  },
+  resistenciaFisica: {
+    title: "Jamacuco",
+    body: "Valor igual a 12 - ROB, salvo arquetipos. Se tira con 3D6 para igualarlo o superarlo. Si falla, el jubilado muere."
+  },
+  ataque: {
+    title: "Peleas",
+    body: "Para atacar se tira Tollinas o Petanca contra el Nervio del oponente. El dano es fijo segun el tipo de ataque y puede aumentar con ROB, PRE, criticos, apuntar o yayopoints."
+  },
+  defectos: {
+    title: "Achaques",
+    body: "Cada PJ tiene un achaque mayor y uno menor. El mayor permite forzar repeticion con 1D menos y da 1 yayopoint; el menor fuerza repeticion sin yayopoint."
+  }
 };
 const RANDOM_PLACES = [
   "recepcion del hotel",
@@ -127,6 +209,22 @@ Hooks.on("closeApplication", () => {
 });
 
 function registerSettings() {
+  game.settings.register(MODULE_ID, "rulesMode", {
+    name: "Modo de reglas IMSERSO",
+    hint: "YSYSTEM3 mantiene automatismos del sistema base. Clasico muestra la ficha y ayudas segun el manual original de IMSERSO to the Limit, ocultando elementos que no pertenecen a YayoSystem.",
+    scope: "world",
+    config: true,
+    type: String,
+    choices: {
+      [MODE_YSYSTEM3]: "IMSERSO para YSYSTEM3",
+      [MODE_CLASSIC]: "IMSERSO to the Limit clasico"
+    },
+    default: MODE_CLASSIC,
+    onChange: () => {
+      applyGlobalThemeClass();
+      rerenderSystemApps();
+    }
+  });
   game.settings.register(MODULE_ID, "forceSheets", {
     name: "Usar hojas IMSERSO",
     hint: "Registra las hojas tematizadas del modulo como hojas por defecto para PJ, PNJ e items de ysystem3-srd.",
@@ -192,7 +290,7 @@ function registerHandlebarsHelpers() {
   Handlebars.registerHelper("imsItemIcon", (type) => iconForItemType(type));
   Handlebars.registerHelper("imsAttr", (key) => imsersoAttr(key).short);
   Handlebars.registerHelper("imsSkill", (key) => imsersoSkill(key));
-  Handlebars.registerHelper("ysFixed", (key) => IMS_FIXED[key] ?? key);
+  Handlebars.registerHelper("ysFixed", (key) => fixedLabel(key));
 }
 
 export class ImsersoVariantActorSheet extends ImsersoActorSheet {
@@ -210,24 +308,25 @@ export class ImsersoVariantActorSheet extends ImsersoActorSheet {
 
   async getData() {
     const context = await super.getData();
-    context.themeClass = THEME_CLASS;
+    const mode = currentRulesMode();
+    context.imsRulesMode = mode;
+    context.imsClassic = mode === MODE_CLASSIC;
+    context.themeClass = `${THEME_CLASS} ${modeClass()}`;
     context.logoPath = LOGO_PATH;
     context.imsHelp = localization.help ?? {};
     context.imsLabels = localization.terms ?? {};
-    context.atributos = (context.atributos ?? []).map((row) => ({
-      ...row,
-      ...imsersoAttr(row.key)
-    }));
-    context.habilidades = (context.habilidades ?? []).map((row) => ({
-      ...row,
-      label: imsersoSkill(row.key),
-      attrLabel: imsersoAttr(row.atributo).short
-    }));
+    if (context.imsClassic) applyClassicDerivedContext(context, this.actor.type);
+    context.atributos = (context.atributos ?? [])
+      .map((row) => ({ ...row, ...imsersoAttr(row.key) }))
+      .filter((row) => !row.hidden);
+    context.habilidades = (context.habilidades ?? [])
+      .map((row) => skillContextRow(row))
+      .filter((row) => !row.hidden);
     context.skillOptions = (context.skillOptions ?? []).map((row) => ({
       ...row,
       label: imsersoSkill(row.key),
-      attrLabel: imsersoAttr(row.atributo).short
-    }));
+      attrLabel: skillAttributeLabel(row.key, row.atributo)
+    })).filter((row) => !row.hidden);
     if (context.effectiveAttack) {
       context.effectiveAttack.skillLabel = imsersoSkill(context.effectiveAttack.skill);
       context.effectiveAttack.attrLabel = imsersoAttr(context.effectiveAttack.attr).short;
@@ -235,8 +334,9 @@ export class ImsersoVariantActorSheet extends ImsersoActorSheet {
 
     context.itemSections = Object.entries(context.itemsByType ?? {})
       .filter(([, items]) => items.length)
+      .filter(([key]) => !context.imsClassic || !["poder", "arquetipo"].includes(key))
       .map(([key, items]) => ({ key, label: term(key), icon: iconForItemType(key), items }));
-    context.itemCreateTypes = [
+    const itemCreateTypes = [
       { type: "arma", label: term("arma"), icon: "fa-gavel" },
       { type: "armadura", label: term("armadura"), icon: "fa-vest" },
       { type: "escudo", label: term("escudo"), icon: "fa-shield-halved" },
@@ -245,6 +345,9 @@ export class ImsersoVariantActorSheet extends ImsersoActorSheet {
       { type: "talento", label: term("talento"), icon: "fa-star" },
       { type: "arquetipo", label: term("arquetipo"), icon: "fa-id-card" }
     ];
+    context.itemCreateTypes = context.imsClassic
+      ? itemCreateTypes.filter((entry) => ["arma", "objeto", "talento"].includes(entry.type))
+      : itemCreateTypes;
     return context;
   }
 
@@ -322,7 +425,7 @@ export class ImsersoVariantItemSheet extends ImsersoItemSheet {
 
   async getData() {
     const context = await super.getData();
-    context.themeClass = THEME_CLASS;
+    context.themeClass = `${THEME_CLASS} ${modeClass()}`;
     context.itemTypeLabel = term(this.item.type);
     context.itemIcon = iconForItemType(this.item.type);
     context.logoPath = LOGO_PATH;
@@ -345,20 +448,27 @@ export class ImsersoCharacterCreator extends YsystemCharacterCreator {
   }
 
   getData() {
+    if (currentRulesMode() === MODE_CLASSIC && this.state.mode === "arquetipo") this.state.mode = "libre";
     const context = super.getData();
-    context.themeClass = THEME_CLASS;
+    context.imsRulesMode = currentRulesMode();
+    context.imsClassic = context.imsRulesMode === MODE_CLASSIC;
+    context.themeClass = `${THEME_CLASS} ${modeClass()}`;
     context.imsHelp = localization.help ?? {};
     context.imsGeneratorSummary = this._generatorSummary();
     context.atributos = (context.atributos ?? []).map((row) => ({
       ...row,
       label: imsersoAttr(row.key).label,
-      short: imsersoAttr(row.key).short
-    }));
+      short: imsersoAttr(row.key).short,
+      options: context.imsClassic ? [0, 2, 4, 6].map((value) => ({ value, label: value ? `+${value}` : "0" })) : row.options
+    })).filter((row) => !imsersoAttr(row.key).hidden);
     context.habilidades = (context.habilidades ?? []).map((row) => ({
       ...row,
       label: imsersoSkill(row.key),
-      attr: imsersoAttr(IMSERSO.habilidades[row.key]?.atributo).short
-    }));
+      attr: skillAttributeLabel(row.key, IMSERSO.habilidades[row.key]?.atributo),
+      hidden: isHiddenSkill(row.key)
+    })).filter((row) => !row.hidden);
+    context.skillTarget3 = 4;
+    context.skillTarget2 = context.imsClassic ? 6 : 8;
     return context;
   }
 
@@ -381,7 +491,7 @@ export class ImsersoCharacterCreator extends YsystemCharacterCreator {
         `<strong>${term("profesion")}:</strong> ${escapeHtml(generated.summary.oficio)}.`,
         `<strong>${term("achaque")}:</strong> ${escapeHtml(generated.summary.achaque)}.`,
         `<strong>Objetivo:</strong> ${escapeHtml(generated.summary.objetivo)}.`,
-        `<strong>3D:</strong> ${escapeHtml(generated.selected3.map(labelForSkill).join(", "))}.`
+        `<strong>3D:</strong> ${escapeHtml(generated.selected3.map(imsersoSkill).join(", "))}.`
       ])
     });
     this.render(false);
@@ -420,6 +530,67 @@ export class ImsersoCharacterCreator extends YsystemCharacterCreator {
   _generatorSummary() {
     return this._imsGeneratorSummary ?? null;
   }
+
+  _selectedSkillCounts(habilidades = this.state.habilidades) {
+    if (currentRulesMode() !== MODE_CLASSIC) return super._selectedSkillCounts(habilidades);
+    const rows = Object.entries(habilidades ?? {}).filter(([key]) => !isHiddenSkill(key)).map(([, value]) => value);
+    return {
+      d3: rows.filter((row) => Number(row?.dados ?? 1) === 3).length,
+      d2: rows.filter((row) => Number(row?.dados ?? 1) === 2).length
+    };
+  }
+
+  _effectiveBuild() {
+    const effective = super._effectiveBuild();
+    if (currentRulesMode() !== MODE_CLASSIC || this.state.actorType !== "personaje") return effective;
+    const attrs = effective.attrs;
+    const skills = effective.skills;
+    const healthRoll = Number(this.state.healthRoll) || 0;
+    const healthBase = 10 + (Number(attrs.fue) || 0) * 2;
+    return {
+      ...effective,
+      healthBase,
+      healthRoll,
+      health: healthBase + healthRoll,
+      agilidad: (Number(skills.atletismo?.dados) || 1) * 3 + (Number(attrs.des) || 0),
+      aplomo: (Number(attrs.int) || 0) + 7,
+      perspicacia: "",
+      proezas: Math.floor(((Number(attrs.int) || 0) + (Number(attrs.fue) || 0)) / 2) + 2,
+      rf: 12 - (Number(attrs.fue) || 0)
+    };
+  }
+
+  _warnings(effective, counts) {
+    if (currentRulesMode() !== MODE_CLASSIC || this.state.actorType !== "personaje") return super._warnings(effective, counts);
+    const warnings = [];
+    if (!this.state.name.trim()) warnings.push("Falta el nombre.");
+    if (!this.state.healthRoll) warnings.push("Falta tirar o generar la Salud inicial con 1D6.");
+    const values = ["int", "car", "des", "fue"].map((key) => Number(this.state.atributos?.[key]));
+    if (new Set(values).size !== 4 || ![0, 2, 4, 6].every((value) => values.includes(value))) {
+      warnings.push("Reparte una vez cada valor clasico de atributo: 0, +2, +4 y +6.");
+    }
+    if (counts.d3 !== 4) warnings.push(`Selecciona exactamente 4 habilidades a 3D. Ahora: ${counts.d3}.`);
+    if (counts.d2 !== 6) warnings.push(`Selecciona exactamente 6 habilidades a 2D. Ahora: ${counts.d2}.`);
+    if (!this.state.defectos.leve.trim() || !this.state.defectos.grave.trim()) warnings.push("Faltan achaque menor y achaque mayor.");
+    return warnings;
+  }
+
+  _pjUpdateData(effective) {
+    const data = super._pjUpdateData(effective);
+    if (currentRulesMode() !== MODE_CLASSIC) return data;
+    data["system.proezas.valor"] = effective.proezas;
+    data["system.proezas.inicial"] = effective.proezas;
+    data["system.resistenciaFisica.valor"] = effective.rf;
+    data["system.datos.perfil"] = this.state.datos.perfil || "IMSERSO clasico";
+    delete data["system.puntoGuion.valor"];
+    delete data["system.puntoGuion.max"];
+    delete data["system.estabilidad.valor"];
+    delete data["system.estabilidad.max"];
+    delete data["system.resistenciaMental.valor"];
+    delete data["system.resistenciaMental.primeraTirada"];
+    delete data["system.resistenciaMental.umbrales"];
+    return data;
+  }
 }
 
 function openImsersoCreator(actorOrOptions = null) {
@@ -428,12 +599,19 @@ function openImsersoCreator(actorOrOptions = null) {
 
 async function buildRandomPj(base) {
   const attrKeys = Object.keys(IMSERSO.atributos);
+  const classic = currentRulesMode() === MODE_CLASSIC;
   const attrValues = shuffle([0, 1, 2, 4, 6]);
-  const atributos = Object.fromEntries(attrKeys.map((key, index) => [key, attrValues[index]]));
+  const atributos = classic
+    ? { int: 0, car: 0, des: 0, fue: 0, per: 0 }
+    : Object.fromEntries(attrKeys.map((key, index) => [key, attrValues[index]]));
+  if (classic) {
+    const values = shuffle([0, 2, 4, 6]);
+    for (const [index, key] of ["int", "car", "des", "fue"].entries()) atributos[key] = values[index];
+  }
   const habilidades = defaultSkills(1);
-  const skillKeys = shuffle(Object.keys(IMSERSO.habilidades));
+  const skillKeys = shuffle(Object.keys(IMSERSO.habilidades).filter((key) => !isHiddenSkill(key)));
   const selected3 = skillKeys.slice(0, 4);
-  const selected2 = skillKeys.slice(4, 12);
+  const selected2 = skillKeys.slice(4, classic ? 10 : 12);
   for (const key of selected3) habilidades[key] = { dados: 3 };
   for (const key of selected2) habilidades[key] = { dados: 2 };
   const healthRoll = await rollD6();
@@ -500,7 +678,7 @@ async function buildRandomPnj(base) {
       rol,
       bando: actitud,
       descripcion: `${capitalize(actitud)}; ${rasgo}. Suele aparecer en ${lugar}.`,
-      notas: `Secreto: ${secreto}. Vinculo: ${colectivo}. Especialidades: ${selected3.concat(selected2).map(labelForSkill).join(", ")}.`
+      notas: `Secreto: ${secreto}. Vinculo: ${colectivo}. Especialidades: ${selected3.concat(selected2).map(imsersoSkill).join(", ")}.`
     },
     summary: { rol, secreto, rasgo, actitud, lugar, colectivo }
   };
@@ -518,7 +696,17 @@ async function rollD6() {
 }
 
 function contextualHelp(type, key) {
+  if (type === "attribute") {
+    const entry = imsersoAttr(key);
+    if (entry?.body) return { title: `${entry.label} (${entry.short})`, body: entry.body, subtitle: "Atributo" };
+  }
+  if (type === "skill") {
+    const entry = skillHelp(key);
+    if (entry) return { title: entry.label, body: entry.body, subtitle: skillAttributeLabel(key, IMSERSO.habilidades[key]?.atributo) };
+  }
   if (type === "rule") {
+    const classic = currentRulesMode() === MODE_CLASSIC ? CLASSIC_RULE_HELP[key] : null;
+    if (classic) return { title: classic.title, body: classic.body, subtitle: "YayoSystem" };
     const mapped = {
       proezas: "yayopuntos",
       salud: "salud",
@@ -544,6 +732,23 @@ function contextualHelp(type, key) {
 }
 
 function term(key) {
+  if (currentRulesMode() === MODE_CLASSIC) {
+    const classicTerms = {
+      proezas: "Yayopoints",
+      rf: "Jamacuco",
+      rm: "Resistencia mental",
+      arquetipo: "Arquetipo de jubilado",
+      talento: "Talento",
+      equipo: "Pertenencias",
+      arma: "Arma",
+      armadura: "Proteccion",
+      escudo: "Cobertura",
+      objeto: "Archiperre",
+      poder: "Rareza",
+      salud: "Salud"
+    };
+    if (classicTerms[key]) return classicTerms[key];
+  }
   const direct = localization.terms?.[key];
   if (direct) return direct;
   const aliases = {
@@ -580,16 +785,104 @@ function iconForItemType(type) {
 }
 
 function imsersoAttr(key) {
-  return IMS_ATTRS[key] ?? { label: key, short: key };
+  if (currentRulesMode() === MODE_CLASSIC) {
+    const entry = CLASSIC_ATTRS[key];
+    if (entry) return entry;
+    return { label: key, short: key, hidden: true };
+  }
+  return IMS_ATTRS_YSYSTEM3[key] ?? { label: key, short: key };
 }
 
 function imsersoSkill(key) {
-  return IMS_SKILLS[key] ?? labelForSkill(key);
+  if (currentRulesMode() === MODE_CLASSIC) return CLASSIC_SKILLS[key]?.label ?? labelForSkill(key);
+  return IMS_SKILLS_YSYSTEM3[key] ?? labelForSkill(key);
+}
+
+function skillHelp(key) {
+  if (currentRulesMode() === MODE_CLASSIC) return CLASSIC_SKILLS[key] ?? null;
+  return {
+    label: imsersoSkill(key),
+    body: `Habilidad de IMSERSO para YSYSTEM3. Usa la mecanica base del sistema y conserva automatismos de tirada, pero se presenta con terminologia de viaje.`,
+  };
+}
+
+function skillAttributeLabel(skillKey, fallbackAttr) {
+  const attr = currentRulesMode() === MODE_CLASSIC ? CLASSIC_SKILLS[skillKey]?.attr : fallbackAttr;
+  return imsersoAttr(attr ?? fallbackAttr).short;
+}
+
+function isHiddenSkill(key) {
+  return currentRulesMode() === MODE_CLASSIC && (!CLASSIC_SKILLS[key] || CLASSIC_HIDDEN_SKILLS.has(key));
+}
+
+function skillContextRow(row) {
+  return {
+    ...row,
+    label: imsersoSkill(row.key),
+    attrLabel: skillAttributeLabel(row.key, row.atributo),
+    hidden: isHiddenSkill(row.key)
+  };
+}
+
+function fixedLabel(key) {
+  return currentRulesMode() === MODE_CLASSIC ? (CLASSIC_FIXED[key] ?? key) : (IMS_FIXED_YSYSTEM3[key] ?? key);
+}
+
+function currentRulesMode() {
+  try {
+    return game.settings?.get?.(MODULE_ID, "rulesMode") ?? MODE_CLASSIC;
+  } catch (err) {
+    return MODE_CLASSIC;
+  }
+}
+
+function modeClass() {
+  return currentRulesMode() === MODE_CLASSIC ? "ys-imserso-classic" : "ys-imserso-ysystem3";
+}
+
+function applyClassicDerivedContext(context, actorType = context.actor?.type) {
+  const system = foundry.utils.deepClone(context.system ?? {});
+  const attrs = system.atributos ?? {};
+  const skills = system.habilidades ?? {};
+  const cac = Number(attrs.int) || 0;
+  const pre = Number(attrs.des) || 0;
+  const rob = Number(attrs.fue) || 0;
+  const gimnasia = Number(skills.atletismo?.dados) || 1;
+  const bemoles = cac + 7;
+  const nervio = (gimnasia * 3) + pre;
+  const jamacuco = 12 - rob;
+  if (actorType === "pnj") {
+    system.aplomo = { ...(system.aplomo ?? {}), valor: bemoles };
+    system.agilidad = { ...(system.agilidad ?? {}), valor: nervio };
+    system.perspicacia = { ...(system.perspicacia ?? {}), valor: "" };
+  } else {
+    system.aplomo = bemoles;
+    system.agilidad = nervio;
+    system.perspicacia = "";
+  }
+  system.resistenciaFisica = { ...(system.resistenciaFisica ?? {}), valor: jamacuco };
+  context.system = system;
+  const classicThresholds = new Set([15, 10, 6, 3, 1]);
+  context.healthTrack = (context.healthTrack ?? []).map((point) => ({
+    ...point,
+    threshold: classicThresholds.has(point.value),
+    thresholdLabel: classicThresholds.has(point.value) ? "J" : "",
+    crossed: !!system.resistenciaFisica?.umbrales?.[point.value]
+  }));
+  context.healthZones = [
+    { label: "UCI", class: "zone-uci", style: "grid-column: 1 / 2;" },
+    { label: "-3D", class: "zone-minus3", style: "grid-column: 2 / 4;" },
+    { label: "-2D", class: "zone-minus2", style: "grid-column: 4 / 7;" },
+    { label: "-1D", class: "zone-minus1", style: "grid-column: 7 / 11;" },
+    { label: "Sin penalizador", class: "zone-safe", style: "grid-column: 11 / 29;" }
+  ];
 }
 
 function applyGlobalThemeClass() {
   document.body?.classList.add(THEME_CLASS);
   document.body?.classList.add("ys-imserso-module-active");
+  document.body?.classList.remove("ys-imserso-classic", "ys-imserso-ysystem3");
+  document.body?.classList.add(modeClass());
 }
 
 function applyAppTheme(app, html) {
@@ -597,7 +890,9 @@ function applyAppTheme(app, html) {
   const jq = asJQuery(html);
   const root = jq.closest(".window-app")[0] ?? app?.element?.[0] ?? jq[0];
   root?.classList?.add(THEME_CLASS);
-  jq.find(".ims-sheet, .ys-screen-sheet, .ys-a4-sheet, .ims-item, .ims-creator, .ims-chat-card").addClass(THEME_CLASS);
+  root?.classList?.remove("ys-imserso-classic", "ys-imserso-ysystem3");
+  root?.classList?.add(modeClass());
+  jq.find(".ims-sheet, .ys-screen-sheet, .ys-a4-sheet, .ims-item, .ims-creator, .ims-chat-card").addClass(`${THEME_CLASS} ${modeClass()}`);
 }
 
 function injectDirectoryControls(html) {
